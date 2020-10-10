@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulario de registro para el evento</title>
+    <base target="_top">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  </head>
+  <body>
+    <main class="container">
+      <div class="row">
+          <div class="col-md-6">
+             <label>Ingrese su nombre: </label>
+             <input class="form-control" type="text" id="nombre">
+          </div>
+          <div class="col-md-6">
+             <label>Ingrese su apellido: </label>
+             <input class="form-control" type="text" id="apellido">
+          </div>
+      </div>
+      <div class="row">
+           <div class="col-md-4">
+             <label>Ingrese su cedula: </label>
+             <input class="form-control" type="number" id="cedula" min="0">
+          </div>
+          <div class="col-md-4">
+             <label>Seleccione el artista que quiere ver: </label>
+             <select class="form-control" id="artista">
+             <option>Andres Calamaro</option>
+             <option>Fito Paez</option>
+             <option>Artic Monkeys</option>
+             <option>Aurora</option>
+             <option>The strokes</option>
+             </select>
+          </div>
+          <div class="col-md-4">
+             <label>Ingrese su correo: </label>
+             <input class="form-control" type="email" id="email">
+          </div>
+      </div>
+      <button type="button" class="btn btn-primary" id="bt">Registrarse</button>
+    </main>
+    
+    <script>
+       document.getElementById("bt").addEventListener("click",enviar);
+      var h = document.getElementById("nombre").value;
+      alert(h);
+       function enviar(){
+         var persona = {};
+         
+         persona.nombre = document.getElementById("nombre").value;
+         persona.apellido = document.getElementById("apellido").value;
+         persona.cedula = document.getElementById("cedula").value;
+         persona.artista = document.getElementById("artista").value;
+         persona.email = document.getElementById("email").value;
+         
+         //llamamos la función de nuestro script y le pasamos el parametro
+         google.script.run.registrar(persona);
+         limpiarDatos();
+         alert("hola");
+       }
+       
+       function limpiarDatos(){
+              document.getElementById("nombre").value="";
+              document.getElementById("apellido").value="";
+              document.getElementById("cedula").value="";
+              document.getElementById("artista").value="";
+              document.getElementById("email").value="";
+       }
+    </script>
+    
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
